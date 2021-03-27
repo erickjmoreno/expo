@@ -64,7 +64,7 @@ function ProjectListItem({
   };
 
   const handlePressUsername = () => {
-    navigation.navigate('Profile', { username });
+    navigation.navigate('Account', { accountName: username });
   };
 
   const renderExtraText = React.useCallback(

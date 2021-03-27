@@ -51,17 +51,9 @@ function Loading() {
 export default function ExploreTab(props: QueryProps) {
   const { loading, error, refetch, loadMoreAsync, data } = props;
 
-  const navigation: StackNavigationProp<AllStackRoutes, 'ExploreAndSearch'> = useNavigation();
   const theme = useTheme();
   const [isRefetching, setRefetching] = React.useState(false);
   const isLoading = React.useRef<null | boolean>(false);
-
-  const onPressUsername = React.useCallback(
-    (username: string) => {
-      navigation.push('Profile', { username });
-    },
-    [navigation]
-  );
 
   const apps = data?.apps;
 
@@ -112,7 +104,6 @@ export default function ExploreTab(props: QueryProps) {
         description={app.description}
         experienceInfo={{ username: app.username, slug: app.packageName }}
         sdkVersion={app.sdkVersion}
-        onPressUsername={onPressUsername}
         style={{ marginBottom: 10 }}
       />
     );
